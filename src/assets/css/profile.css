@@ -1,0 +1,100 @@
+.profile {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: var(--text-light-gray-color);
+}
+.profile-info {
+    width: 30%;
+    height: 100%;
+    background-color: var(--prim-black-light);
+}
+.profile-img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 6% auto;
+    border: 1px solid var(--img-border-color);
+}
+.profile-names {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    margin-left: 5%;
+}
+.profile-name {
+    font-size: 35px;
+    font-style: italic;
+}
+.profile-informations {
+
+}
+.profile-bio {
+    font-size: 15px;
+    color: var(--text-dark-gray-color);
+    margin: 2% 5% 5% 5%;
+}
+.profile-status {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: .8rem;
+    margin-right: 10%;
+    margin-left: 5%;
+}
+.status-info-icon {
+    margin-right: 5px;
+}
+.status-info-text {
+    margin-left: 5px;
+}
+.status-info {
+    display: flex;
+    align-items: center;
+}
+.profile-links {
+    font-size: 1.2rem;
+    margin-left: 5%;
+}
+.profile-link {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.profile-link-text {
+    margin-left: 10px;
+}
+
+
+
+.profile-repositories {
+    display: block;
+    flex-direction: column;
+    height: 100vh;
+    width: 70%;
+    overflow: auto;
+    color: var(--prim-black-light );
+    font-style: italic;
+}
+.profile-repository {
+    min-height: 60px;
+    margin: 20px 40px;
+}
+.repository-name {
+    font-size: 24px;
+}
+.profile-repository:not(:last-child) {
+    border-bottom: 1px solid var(--text-light-gray-color);
+}
+.repository-description {
+    font-style: none;
+    font-size: 18px;
+    margin: 10px 0;
+}
+.repository-info {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

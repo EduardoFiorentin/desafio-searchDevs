@@ -1,0 +1,16 @@
+:root {
+    --prim-black-light: #3B4252;
+    --text-dark-gray-color: #8190A5;
+    --text-light-gray-color: #ECEFF4;
+    --prim-black-dark: #47525E;
+    --img-border-color: #C0CCDA;
+
+    --font: 'Lato', sans-serif;
+
+    
+
+
+
+    /* General configs */
+    font-family: var(--font)
+}
