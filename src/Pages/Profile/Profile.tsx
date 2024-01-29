@@ -1,54 +1,39 @@
 import { useParams, useNavigate } from "react-router-dom"
-import mock from "./mock"
 import { useEffect, useState } from "react"
-
 import { Building2, MapPin, Mail, Link2, Twitter, UsersRound, Heart, Star, Dot } from "lucide-react"
-import { RecoilState, useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilValue } from "recoil"
 import user from "../../atoms/user"
 import axios from "axios"
-
-import { Repository, Owner, GitHubUser } from "../../types/types"
-import repositories from "../../atoms/repositories"
+import { Repository } from "../../types/Repository"
+import { GitHubUser } from "../../types/GithubUser"
+import { calcDaysAgo } from "../../utils/calcDaysAgo"
+import { calcStars } from "../../utils/calcStars"
+import mock from "./mock"
+import configuration from "../../config/config"
 
 function Profile() {
   const {name} = useParams()
-
-  // const [userSearch, setUserSearch] = useRecoilState<GitHubUser[]>(user)
-  const userSearch: GitHubUser = useRecoilValue(user)
+  const userSearch: GitHubUser | null = useRecoilValue(user)
   const [reps, setReps] = useState<Repository[]>([])
-  const [stars, setStars] = useState(0)
-
-  const calcStars = () => {
-    var stars = 0
-    for(var i = 0 ; i < reps.length ; i++) {
-      stars += reps[i]?.stargazers_count
-    }
-    setStars(stars)
+  const [stars, setStars] = useState<number>(0)
+  
+  const getMockRepositories = () => {
+    setReps(mock.mockRepository)
   }
 
   const getRepositories = () => {
     axios.get(`https://api.github.com/users/${name}/repos`)
     .then(data => {
-      console.log(data.data)
       setReps(data.data)
     })
     .catch(err => console.log(err))
   }
-
-  const calcDaysAgo = (dateString: string): number => {
-    const today = new Date();
-    const lastUpdate = new Date(dateString);
-    const diferenceInMilisseconds = today.getTime() - lastUpdate.getTime();
-    const differenceInDays = diferenceInMilisseconds / (1000 * 3600 * 24);
-    return Math.round(differenceInDays);
-}
-
+  
   useEffect(() => {
-    getRepositories()
-    calcStars()
+    configuration.mock_data ? getMockRepositories() : getRepositories()
   }, [])
 
-  useEffect(() => console.log("user carregado"), [userSearch])
+  useEffect(() => setStars(calcStars(reps)), [reps])
 
     return (
       <div className="profile">
@@ -73,7 +58,9 @@ function Profile() {
                 <Heart size={16} className="status-info-icon"/> {userSearch?.following} <p className="status-info-text">Seguindo</p>
               </div>
               <div className="status-start status-info">
-                <Star size={16} className="status-info-icon"/> {stars} <p className="status-info-text">Estrelas</p>
+                <Star size={16} className="status-info-icon"/> 
+                <p>{stars}</p> 
+                <p className="status-info-text">Estrelas</p>
               </div>
             </div>
           </div>

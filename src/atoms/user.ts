@@ -1,9 +1,9 @@
 import { atom } from "recoil";
-import { Owner } from "../types/types";
+import { GitHubUser } from "../types/GithubUser";
 
-const user = atom({
+const user = atom<GitHubUser | null>({
     key: 'user', // unique ID (with respect to other atoms/selectors)
-    default: [],
+    default: null,
 });
 
 export default user
