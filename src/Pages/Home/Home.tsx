@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react'
 import '../../assets/css/home.css'
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import user from '../../atoms/user'
 import { useRecoilState } from 'recoil'
@@ -18,6 +18,7 @@ function Home() {
   const [errorNotFound, setErrorNotFound] = useState(false)
   const [error, setError] = useState(false)
   const [searching, setSearching] = useState(false)
+
 
   const handleMockSearch = () => {
     resetErrors()

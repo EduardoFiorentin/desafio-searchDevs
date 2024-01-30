@@ -16,6 +16,9 @@ function Profile() {
   const userSearch: GitHubUser | null = useRecoilValue(user)
   const [reps, setReps] = useState<Repository[]>([])
   const [stars, setStars] = useState<number>(0)
+
+  const navigate = useNavigate()
+  const handleNavigate = () => navigate('/home')
   
   const getMockRepositories = () => {
     setReps(mock.mockRepository)
@@ -34,6 +37,10 @@ function Profile() {
   }, [])
 
   useEffect(() => setStars(calcStars(reps)), [reps])
+
+  useEffect(() => {
+    if (userSearch === null) handleNavigate()
+  }, [userSearch]);
 
     return (
       <div className="profile">
@@ -88,7 +95,7 @@ function Profile() {
             </div>
           </div>
 
-          <div className="profile-button"></div>
+          <button className="profile-button" onClick={handleNavigate}>VOLTAR</button>
         </div>)
         }
 

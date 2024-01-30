@@ -95,3 +95,19 @@
     align-items: center;
     margin-bottom: 10px;
 }
+.profile-button {
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: var(--text-light-gray-color);
+    border: none;
+    font-style: italic;
+    transition: 150ms;
+}
+.profile-button {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 150ms;
+}
