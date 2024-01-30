@@ -11,16 +11,16 @@ import Profile from './Pages/Profile/Profile.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/desafio-searchDevs/home",
     element: <Home/>,
   },
   {
-    path: "profile/:name",
+    path: "/desafio-searchDevs/profile/:name",
     element: <Profile/>,
   },
   {
-    path: "/",
-    element: <Navigate to="/home"/>,
+    path: "/desafio-searchDevs",
+    element: <Navigate to="/desafio-searchDevs/home"/>,
   },
 ]);
 

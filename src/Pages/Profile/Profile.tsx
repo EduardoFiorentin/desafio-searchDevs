@@ -19,7 +19,7 @@ function Profile() {
   const [emptyReps, setEmptyReps] = useState(false)
 
   const navigate = useNavigate()
-  const handleNavigate = () => navigate('/home')
+  const handleNavigate = () => navigate('/desafio-searchDevs/home')
   
   const getMockRepositories = () => {
     setReps(mock.mockRepository)

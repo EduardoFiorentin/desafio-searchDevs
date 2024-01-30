@@ -1,10 +1,10 @@
 import { Search } from 'lucide-react'
 import '../../assets/css/home.css'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import user from '../../atoms/user'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import mock from '../Profile/mock'
 import configuration from "../../config/config"
 
@@ -13,8 +13,8 @@ function Home() {
 
   const [search, setSearch] = useState<string>('')
   const navigate = useNavigate()
-  const handleNavigate = () => navigate(`/profile/${configuration.mock_data ? "eduardofiorentin" : search}`)
-  const [userSearch, setUserSearch] = useRecoilState(user)
+  const handleNavigate = () => navigate(`/desafio-searchDevs/profile/${configuration.mock_data ? "eduardofiorentin" : search}`)
+  const  setUserSearch = useSetRecoilState(user)
   const [errorNotFound, setErrorNotFound] = useState(false)
   const [error, setError] = useState(false)
   const [searching, setSearching] = useState(false)
