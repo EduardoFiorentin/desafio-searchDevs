@@ -1,5 +1,5 @@
 const configuration = {
-    "mock_data": false
+    "mock_data": true
 }
 
 export default configuration

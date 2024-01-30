@@ -54,3 +54,16 @@
     color: red;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 425px) {
+    .home-search {
+        flex-direction: column;
+    }
+    .home-input {
+        width: 250px;
+    }
+    .home-button {
+        margin: 10px auto 0 auto;
+
+    }
+}

@@ -111,3 +111,70 @@
     transform: scale(1.01);
     transition: 150ms;
 }
+
+@media only screen and (max-width: 1024px) {
+    .profile-status {
+        flex-direction: column;
+    }
+    .profile-name {
+        font-size: 1.7rem;
+    }
+    .profile-links {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+    }
+    .profile-repositories {
+        overflow: visible;
+    }
+    .profile-info {
+        width: 100%;
+        height: auto;
+    }
+    .profile-name {
+        font-size: 3rem;
+    }
+    .profile-bio {
+        font-size: 1.2rem;
+    }
+    .profile-status {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .profile-links {
+        font-size: 1.5rem;
+    }
+    .profile-button {
+        margin-bottom: 10px
+    }
+    .profile-repositories {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .profile-name {
+        font-size: 2rem;
+    }
+    .profile-bio {
+        font-size: 1rem;
+    }
+    .profile-status {
+        flex-direction: column;
+        /* justify-content: space-evenly; */
+        font-size: 1.2rem;
+    }
+    .profile-links {
+        font-size: 1.2rem;
+    }
+    .repository-dot {
+        display: none;
+    }
+    .repository-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

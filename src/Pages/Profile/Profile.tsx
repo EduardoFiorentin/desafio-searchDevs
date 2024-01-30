@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { Building2, MapPin, Mail, Link2, Twitter, UsersRound, Heart, Star, Dot } from "lucide-react"
+import { Building2, MapPin, Mail, Link2, Twitter, UsersRound, Heart, Star, Dot, ArrowUpFromLine } from "lucide-react"
 import { useRecoilValue } from "recoil"
 import user from "../../atoms/user"
 import axios from "axios"
@@ -56,7 +56,7 @@ function Profile() {
           </div>
 
           <div className="profile-informations">
-            <p className="profile-bio">{userSearch?.bio ? userSearch?.bio : "Sem bio"}</p>
+            <p className="profile-bio">{userSearch?.bio ? userSearch?.bio : "Sem bio"} Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, laboriosam adipisci! Quaerat repellendus reprehenderit recusandae ad minus doloremque ullam dolorem maxime, porro enim aspernatur fugiat eum dicta dolor impedit voluptatibus.</p>
             <div className="profile-status">
               <div className="status-followers status-info">
                 <UsersRound size={16} className="status-info-icon"/> {userSearch?.followers} <p className="status-info-text">Seguidores</p>
@@ -109,8 +109,8 @@ function Profile() {
                    <p className="repository-description">{repository.description ? repository.description : "Sem descrissão..."}</p>
                    <div className="repository-info">
                     <p className="repository-stars"><Star size={16}/> {repository.stargazers_count} Estrelas</p>
-                    <Dot size={16}/>
-                    <p className="repository-last-update">ultimo update {calcDaysAgo(repository.updated_at)} dias atrás</p>
+                    <Dot size={16} className="repository-dot"/>
+                    <p className="repository-last-update"><ArrowUpFromLine size={16}/> ultimo update {calcDaysAgo(repository.updated_at)} dias atrás</p>
                    </div>
                 </div>
               ) 
