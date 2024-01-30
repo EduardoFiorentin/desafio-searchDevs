@@ -112,6 +112,12 @@
     transition: 150ms;
 }
 
+.profile-message {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
 @media only screen and (max-width: 1024px) {
     .profile-status {
         flex-direction: column;

@@ -16,6 +16,7 @@ function Profile() {
   const userSearch: GitHubUser | null = useRecoilValue(user)
   const [reps, setReps] = useState<Repository[]>([])
   const [stars, setStars] = useState<number>(0)
+  const [emptyReps, setEmptyReps] = useState(false)
 
   const navigate = useNavigate()
   const handleNavigate = () => navigate('/home')
@@ -27,7 +28,10 @@ function Profile() {
   const getRepositories = () => {
     axios.get(`https://api.github.com/users/${name}/repos`)
     .then(data => {
-      setReps(data.data)
+      if (data.data.length == 0) {
+        setEmptyReps(true)
+      }
+      else setReps(data.data)
     })
     .catch(err => console.log(err))
   }
@@ -56,7 +60,7 @@ function Profile() {
           </div>
 
           <div className="profile-informations">
-            <p className="profile-bio">{userSearch?.bio ? userSearch?.bio : "Sem bio"} Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, laboriosam adipisci! Quaerat repellendus reprehenderit recusandae ad minus doloremque ullam dolorem maxime, porro enim aspernatur fugiat eum dicta dolor impedit voluptatibus.</p>
+            <p className="profile-bio">{userSearch?.bio ? userSearch?.bio : "Sem bio"}</p>
             <div className="profile-status">
               <div className="status-followers status-info">
                 <UsersRound size={16} className="status-info-icon"/> {userSearch?.followers} <p className="status-info-text">Seguidores</p>
@@ -115,7 +119,7 @@ function Profile() {
                 </div>
               ) 
             })
-            : "Carregando"
+            : emptyReps ? <p className="profile-message">Sem repositórios para exibir</p> : <p className="profile-message">Carregando</p>
           }
         </div>
       </div>
